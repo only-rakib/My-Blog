@@ -1,0 +1,72 @@
+{% extends 'home_base.html' %}
+{% block title %}
+    <title>ACM Solve</title>
+
+{% endblock title %}
+{% block container %}
+    <div style="background: #ecf0f1;">
+        <div style="width: 100%">
+            <div class="side-view">
+                asdasd<br>
+                asdz<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+                zxc<br>
+            </div>
+
+            <div style="overflow: hidden;padding-left: 20px;width: 80%;height: 50px">
+                <h2 class="hcentre">{{ problem_name }}</h2>
+            </div>
+            <div class="separator"></div>
+
+            <div class="div-distance">
+                <h5>Description</h5>
+                {{ description }}
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="div-distance">
+                <h5>Critical Input</h5>
+                {{ critical_input }}
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="div-distance">
+                <h5>Output</h5>
+                {{ output }}
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="div-distance">
+                <h5>Code</h5>
+                {% load pygmentify %}
+                {% pygment %}
+                    <pre lang="c">
+
+
+#include<stdio.h>
+
+int main()
+{
+    printf("Hello World");
+    return 0;
+}
+
+                    </pre>
+                {% endpygment %}
+{% load embed_gist %}
+
+{{ post.body|embed_gist|safe }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

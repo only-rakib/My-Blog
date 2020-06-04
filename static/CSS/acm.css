@@ -1,0 +1,9 @@
+.side-view{
+	float: right;
+    margin-right: 10px;
+    padding-left:20px  ;
+    background: #d9d9d9;
+    width: 300px;
+    height: 100%;
+    font-size: 12px;
+}

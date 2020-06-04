@@ -1,0 +1,39 @@
+{% extends 'home_base.html' %}
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+{% block container %}
+<form method="get">
+    <section class="details-card">
+    <div class="container">
+        <div class="row">
+            {% comment %}
+    {% with ''|center:3 as range %}
+        {% comment %}
+        this with|center:3 as range fixed the value of range is 3
+        {% endcomment %}
+            {% for i in data %}
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img src="{{ i.address }}" alt="image" style="width:380px;height:212px;">
+                            <span><h4>{{ i.head }}</h4></span>
+                        </div>
+                        <div class="card-desc">
+                            <h3>{{ i.title }}</h3>
+                            <p>{{ i.details }} </p>
+                            <button type="submit" name="{{ i.button_name }}" value="{{ i.value }}" class="btn-card">Go Inside</button>
+                            {% comment %}
+                        <button type="button" class="btn-card" name="{{ i.button_name }}">Go Inside</button>
+                        {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+</form>
+{% endblock %}

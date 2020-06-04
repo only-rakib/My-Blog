@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/vs.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/home.css' %}">
+    {% block title %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+<a href="{% url 'home' %}" class="navbar-brand">Home</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Topics</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="#" class="dropdown-item">Divisão Militar</a>
+                <a href="#" class="dropdown-item">Divisão Corporativa</a>
+                <a href="#" class="dropdown-item">Aplicações para a área de saúde</a>
+            </div>
+        </li>
+        <a href="#" class="nav-item active nav-link">About me</a>
+    </ul>
+    </div>
+
+    <form action="#" method="post" class="form-inline my-2 mylg-0">
+        <input type="search" name="buscar" id="buscar" class="form-control mr-sm-2" placeholder="Search this site"
+               aria-label="Buscar">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+</nav>
+
+{% block container %}
+
+{% endblock %}
+
+</body>
+
+</html>
