@@ -48,23 +48,11 @@
             <div class="div-distance">
                 <h5>Code</h5>
                 {% load pygmentify %}
-                {% pygment %}
-                    <pre lang="c">
-
-
-#include<stdio.h>
-
-int main()
-{
-    printf("Hello World");
-    return 0;
-}
-
-                    </pre>
-                {% endpygment %}
-{% load embed_gist %}
-
-{{ post.body|embed_gist|safe }}
+{% pygment %}
+<pre lang='{{ lang }}'>
+{{ content | safe }}
+</pre>
+{% endpygment %}
             </div>
 
         </div>

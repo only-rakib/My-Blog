@@ -52,4 +52,13 @@ class AcmView(TemplateView):
         context['description'] = "Hudai"
         context['critical_input'] = "1234"
         context['output'] = "548512"
+        context['content'] = '#include<stdio.h>' \
+                             'int main()' \
+                             '{' \
+                             'printf("Hello world")' \
+                             'return 0' \
+                             '}' \
+
+
+        context['lang'] = 'c'
         return context
