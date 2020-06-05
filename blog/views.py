@@ -1,6 +1,7 @@
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from . models import UvaSolve
 
 
 class HomeView(TemplateView):
@@ -62,3 +63,6 @@ class AcmView(TemplateView):
 
         context['lang'] = 'c'
         return context
+    '''def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset'''
