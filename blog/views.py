@@ -1,6 +1,6 @@
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import UvaSolve
 
 
@@ -47,5 +47,24 @@ class HomeView(TemplateView):
 class AcmView(ListView):
     template_name = "AcmView.html"
     model = UvaSolve
-    context_object_name = "uva_codes" #it defines the context name what i call in the html
+    context_object_name = "uva_codes"  # it defines the context name what i call in the html
 
+
+class AcmCodesView(DetailView):
+    template_name = "codes.html"
+    model = UvaSolve
+    # context_object_name = "detail"
+
+    def get_queryset(self):
+        return UvaSolve.objects.all()
+
+    def gets_slug_field(self):
+        return UvaSolve.objects.filter(slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+
+        context = super(AcmCodesView, self).get_context_data(**kwargs)
+        context = {"detail": self.gets_slug_field(), "data": self.get_queryset()}
+        #print(type(self.kwargs['slug']))
+        print(context["detail"])
+        return context

@@ -4,46 +4,33 @@
 
 {% endblock %}
 {% block container %}
+    <form method="get">
+        <div class="c-nav">
+            {% for data in uva_codes %}
+                <a href="{{ data.get_absolute_url }}">{{ data.title }}</a><br>
 
-<div class="c-nav">
-    asdasd<br>
-    asdz<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-    zxc<br>
-</div>
+            {% endfor %}
+        </div>
+    </form>
 
-{% for uva in uva_codes %}
-    <div class="c-section">
-        <h1 style="text-align: center;"><a href="{{ uva.url_txt }}">{{ uva.title }}</a></h1>
-        <h2 style="text-align: left">Description</h2>
-        {{ uva.description }}
-        <h2 style="text-align: left">Input</h2>
-        <pre>{{ uva.critical_input | safe }}</pre>
-        <h2 style="text-align: left">Output</h2>
-        <pre>{{ uva.critical_output | safe }}</pre>
-        <h2 style="text-align: left">Code</h2>
-        {% load pygmentify %}
-        {% pygment %}
-            <pre lang='c'>
-            {{ uva.code_txt | safe }}
+        <div class="c-section">
+            <h1 style="text-align: center;"><a href="{{ uva_codes.url_txt }}">{{ uva_codes.title }}</a></h1>
+            <h2 style="text-align: left">Description</h2>
+            {{ uva_codes.description }}
+            <h2 style="text-align: left">Input</h2>
+            <pre>{{ uva_codes.critical_input | safe }}</pre>
+            <h2 style="text-align: left">Output</h2>
+            <pre>{{ uva_codes.critical_output | safe }}</pre>
+            <h2 style="text-align: left">Code</h2>
+            {% load pygmentify %}
+            {% pygment %}
+                <pre lang='c'>
+            {{ uva_codes.code_txt | safe }}
         </pre>
-        {% endpygment %}
-    </div>
-{% endfor %}
+            {% endpygment %}
+        </div>
 
-</div>
-<div class="c-footer">
-    Copyright © rakib.com
-</div>
+    <div class="c-footer">
+        Copyright © rakib.com
+    </div>
 {% endblock %}

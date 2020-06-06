@@ -1,0 +1,36 @@
+{% extends 'home_base.html' %}
+{% block title %}
+    <title>ACM Solve</title>
+
+{% endblock %}
+{% block container %}
+
+    <div class="c-nav">
+    {% for d in data %}
+        <a href="{{ d.get_absolute_url }}">{{ d.title }}</a><br>
+    {% endfor %}
+    </div>
+
+{% for d in detail %}
+    <div class="c-section">
+        <h1 style="text-align: center;"><a href="{{ d.url_txt }}">{{ d.title }}</a></h1>
+        <h2 style="text-align: left">Description</h2>
+        {{ d.description }}
+        <h2 style="text-align: left">Input</h2>
+        <pre>{{ d.critical_input | safe }}</pre>
+        <h2 style="text-align: left">Output</h2>
+        <pre>{{ d.critical_output | safe }}</pre>
+        <h2 style="text-align: left">Code</h2>
+        {% load pygmentify %}
+        {% pygment %}
+            <pre lang='c'>
+            {{ d.code_txt | safe }}
+        </pre>
+        {% endpygment %}
+    </div>
+{% endfor %}
+
+    <div class="c-footer">
+        Copyright © rakib.com
+    </div>
+{% endblock %}
