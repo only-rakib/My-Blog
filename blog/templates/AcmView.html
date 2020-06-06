@@ -1,62 +1,84 @@
-{% extends 'home_base.html' %}
-{% block title %}
-    <title>ACM Solve</title>
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/vs.css' %}">
+    <style>
+        .c-nav {
+            line-height: 30px;
+            background-color: #eeeeee;
+            height: fit-content;
+            width: 200px;
+            float: right;
+            padding: 5px;
+        }
 
-{% endblock title %}
-{% block container %}
-    <div style="background: #ecf0f1;">
-        <div style="width: 100%">
-            <div class="side-view">
-                asdasd<br>
-                asdz<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-                zxc<br>
-            </div>
+        .c-section {
+            width: 800px;
+            float: center;
+            padding: 10px;
+            margin-left: 200px;
+            background-color: whitesmoke;
 
-            <div style="overflow: hidden;padding-left: 20px;width: 80%;height: 50px">
-                <h2 class="hcentre">{{ problem_name }}</h2>
-            </div>
-            <div class="separator"></div>
+        }
 
-            <div class="div-distance">
-                <h5>Description</h5>
-                {{ description }}
-            </div>
+        .c-footer {
+            background-color: black;
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
 
-            <div class="separator"></div>
+        .separator {
+            background: black;
+            height: 10px;
+            width: 800px;
+        }
 
-            <div class="div-distance">
-                <h5>Critical Input</h5>
-                {{ critical_input }}
-            </div>
+    </style>
+</head>
+<body>
+<div class="c-nav">
+    asdasd<br>
+    asdz<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+    zxc<br>
+</div>
 
-            <div class="separator"></div>
-
-            <div class="div-distance">
-                <h5>Output</h5>
-                {{ output }}
-            </div>
-
-            <div class="separator"></div>
-
-            <div class="div-distance">
-                <h5>Code</h5>
-                {% load pygmentify %}
-{% pygment %}
-<pre lang='{{ lang }}'>
-{{ content | safe }}
-</pre>
-
-{% endpygment %}
-
-            </div>
-
-        </div>
+{% for uva in uva_codes %}
+    <div class="c-section">
+    <h1 style="text-align: center;"><a href="{{ uva.url_txt }}">{{ uva.title }}</a></h1>
+    <h2 style="text-align: left">Description</h2>
+    {{ uva.description }}
+    <h2 style="text-align: left">Input</h2>
+    <pre>{{ uva.critical_input | safe }}</pre>
+    <h2 style="text-align: left">Output</h2>
+    <pre>{{ uva.critical_output | safe }}</pre>
+    <h2 style="text-align: left">Code</h2>
+    {% load pygmentify %}
+    {% pygment %}
+        <pre lang='c'>
+            {{ uva.code_txt | safe }}
+        </pre>
+    {% endpygment %}
     </div>
-{% endblock %}
+{% endfor %}
+
+</div>
+    <div class="c-footer">
+        Copyright © rakib.com
+    </div>
+</body>
+</html>
