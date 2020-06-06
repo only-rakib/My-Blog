@@ -1,44 +1,10 @@
-{% load static %}
-<!DOCTYPE HTML>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/vs.css' %}">
-    <style>
-        .c-nav {
-            line-height: 30px;
-            background-color: #eeeeee;
-            height: fit-content;
-            width: 200px;
-            float: right;
-            padding: 5px;
-        }
+{% extends 'home_base.html' %}
+{% block title %}
+    <title>ACM Solve</title>
 
-        .c-section {
-            width: 800px;
-            float: center;
-            padding: 10px;
-            margin-left: 200px;
-            background-color: whitesmoke;
+{% endblock %}
+{% block container %}
 
-        }
-
-        .c-footer {
-            background-color: black;
-            color: white;
-            clear: both;
-            text-align: center;
-            padding: 5px;
-        }
-
-        .separator {
-            background: black;
-            height: 10px;
-            width: 800px;
-        }
-
-    </style>
-</head>
-<body>
 <div class="c-nav">
     asdasd<br>
     asdz<br>
@@ -59,26 +25,25 @@
 
 {% for uva in uva_codes %}
     <div class="c-section">
-    <h1 style="text-align: center;"><a href="{{ uva.url_txt }}">{{ uva.title }}</a></h1>
-    <h2 style="text-align: left">Description</h2>
-    {{ uva.description }}
-    <h2 style="text-align: left">Input</h2>
-    <pre>{{ uva.critical_input | safe }}</pre>
-    <h2 style="text-align: left">Output</h2>
-    <pre>{{ uva.critical_output | safe }}</pre>
-    <h2 style="text-align: left">Code</h2>
-    {% load pygmentify %}
-    {% pygment %}
-        <pre lang='c'>
+        <h1 style="text-align: center;"><a href="{{ uva.url_txt }}">{{ uva.title }}</a></h1>
+        <h2 style="text-align: left">Description</h2>
+        {{ uva.description }}
+        <h2 style="text-align: left">Input</h2>
+        <pre>{{ uva.critical_input | safe }}</pre>
+        <h2 style="text-align: left">Output</h2>
+        <pre>{{ uva.critical_output | safe }}</pre>
+        <h2 style="text-align: left">Code</h2>
+        {% load pygmentify %}
+        {% pygment %}
+            <pre lang='c'>
             {{ uva.code_txt | safe }}
         </pre>
-    {% endpygment %}
+        {% endpygment %}
     </div>
 {% endfor %}
 
 </div>
-    <div class="c-footer">
-        Copyright © rakib.com
-    </div>
-</body>
-</html>
+<div class="c-footer">
+    Copyright © rakib.com
+</div>
+{% endblock %}
